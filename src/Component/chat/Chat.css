@@ -1,0 +1,78 @@
+.container2 {
+  border: 0.1rem solid #dedede;
+  background-color: #80ccff;
+  border-radius: 0.3rem;
+  padding: 0.10rem;
+  margin: 0.10rem 0;
+  display: block;
+  min-width: 20rem;
+  float: right;
+  /* margin-right: -6%; */
+}
+  
+.darker {
+  border-color: #ccc;
+  background-color: #1affc6;
+  float: left;
+  /* margin-left: -5%; */
+}
+
+.container2::after {
+  content: "";
+  clear: both;
+  display: table; 
+}  
+
+.container2 img {
+  float: left;
+  max-width: 0.60rem;
+  width: 100%;
+  margin-right: 0.20rem;
+  border-radius: 50%;
+}
+  
+.container2 img.right {
+  float: right;
+  margin-left: 0.20rem;
+  margin-right:0;
+}
+  
+.time-right {
+  float: right;
+  color: #999;
+}
+  
+.time-left {
+  float: left;
+  color: #999;
+}
+
+.Chat2{
+  display: inline-block;
+  width: 100%;
+}
+.Chat1{
+  display: inline-block;
+  width: 100%;
+}
+
+.fromName{
+  text-align: left;
+}
+
+.fromName2{
+  text-align: right;
+}
+
+.input_chat{
+  position: static;
+  top: 50px;
+  left: 50px;
+}
+
+#inputSendComm {
+  position: fixed;
+  top: 95%;
+  width: 100%;
+  right: 0%;
+}
