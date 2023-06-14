@@ -3,6 +3,19 @@ import { ReactJewishDatePicker, BasicJewishDay } from "react-jewish-datepicker";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
+import {  Box } from "@mui/material";
+import { Input } from "@mui/icons-material";
+
+import {
+  useJsApiLoader,
+  GoogleMap,
+  Marker,
+  Autocomplete,
+  DirectionsRenderer,
+} from '@react-google-maps/api'
+
+
+
 
 function CreateEvent(props) {
   const [basicJewishDay, setBasicJewishDay] = useState();
@@ -11,6 +24,8 @@ function CreateEvent(props) {
   const [NameEvent, setNameEvent] = useState("");
   const refClick = useRef("לוח לועזי");
   const navigate = useNavigate();
+
+  const originRef = useRef()
 
   const handleChange = () => {
     setChecked(!checked);
@@ -39,7 +54,16 @@ function CreateEvent(props) {
   return (
 
     <div className="container text-center">
-      <div className="card">
+sdfsdf
+          <Box flexGrow={1}>
+            <Autocomplete>
+              <Input type='text' placeholder='Origin' ref={originRef} />
+            </Autocomplete>
+          </Box>
+          <Box flexGrow={1}></Box>
+
+
+      {/* <div className="card">
         <div className="card-body">
           <h1 dir="rtl">בחר תאריך</h1>
           <br />
@@ -104,12 +128,12 @@ function CreateEvent(props) {
               }}
             />
           </p>
-
-
-
           <button onClick={newEvent}>הוסף אירוע חדש !</button>
         </div>
-      </div>
+      </div> */}
+
+
+
     </div>
 
   );
