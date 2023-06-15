@@ -17,7 +17,7 @@ import {
 function CreateEvent(props) {
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.GOOGLE_MAP_KEY,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_KEY,
     libraries: ['places'],
   })
 
@@ -74,7 +74,7 @@ function CreateEvent(props) {
 
 
     axios
-      .post(`${process.env.BASIC_URL_SERVER}/event/CreateEvent`, {
+      .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/event/CreateEvent`, {
         NameEvent: NameEvent,
         Date: dilema,
         photoUser: photoUser.url,

@@ -15,7 +15,7 @@ export default function Login () {
   useEffect(() => {
     if (cookiesToken.Token !== null) {
       axios
-        .post(`${process.env.BASIC_URL_SERVER}/checkAuth`, { token: cookiesToken.Token })
+        .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/checkAuth`, { token: cookiesToken.Token })
         .then((response) => {
           if (
             window.confirm(
@@ -39,7 +39,7 @@ export default function Login () {
   function inputLogin(event) {
     event.preventDefault();
     axios
-      .post(`${process.env.BASIC_URL_SERVER}/users/Login`, {
+      .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/users/Login`, {
         Name1: firstName.current.value,
         Name2: LastName.current.value,
         pass: password.current.value,

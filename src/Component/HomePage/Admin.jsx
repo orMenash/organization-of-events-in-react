@@ -38,7 +38,7 @@ export default () => {
 
       if (formValues) {
         axios
-          .post(`${process.env.BASIC_URL_SERVER}/users/Login`, {
+          .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/users/Login`, {
             Name1: formValues[0],
             Name2: formValues[1],
             pass: formValues[2],

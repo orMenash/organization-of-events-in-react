@@ -38,6 +38,6 @@ const MapComponent = ({ google, latitude, longitude }) => {
 
 
 export default GoogleApiWrapper({
-  apiKey: process.env.GOOGLE_MAP_KEY
+  apiKey: process.env.REACT_APP_GOOGLE_MAP_KEY
 })(MapComponent);
 

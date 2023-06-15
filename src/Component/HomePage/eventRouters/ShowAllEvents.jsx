@@ -8,7 +8,7 @@ export default (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     
-    axios.get(`${process.env.BASIC_URL_SERVER}/event/allEvents`).then((res) => { 
+    axios.get(`${process.env.REACT_APP_BASIC_URL_SERVER}/event/allEvents`).then((res) => { 
       
       setArrEnent(res.data.GetIt);
     });

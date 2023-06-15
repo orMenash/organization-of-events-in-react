@@ -11,7 +11,7 @@ export default (props) => {
   const [vi, setVi] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.BASIC_URL_SERVER}/admin/ShowAllUsersAdmin`).then((res) => {
+    axios.get(`${process.env.REACT_APP_BASIC_URL_SERVER}/admin/ShowAllUsersAdmin`).then((res) => {
       setArrUsers(res.data.GetIt);
       const tempArr = new Array(res.data.GetIt.length).fill(false);
       setVi(tempArr);
@@ -27,7 +27,7 @@ export default (props) => {
     const tempArr = new Array(ArrUsers.length).fill(false);
     setVi(tempArr);
     axios
-      .post(`${process.env.BASIC_URL_SERVER}/admin/sendMsgToUser`, {
+      .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/admin/sendMsgToUser`, {
         arrUsers: result,
         msg: inpueRef.current.value,
       })

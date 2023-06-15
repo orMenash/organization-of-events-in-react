@@ -16,7 +16,7 @@ function WarpMyBar(props) {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:3010/users/alarmUser",
+        `${process.env.REACT_APP_BASIC_URL_SERVER}/users/alarmUser`,
         { id: localStorage.id }
       )
       .then((res) => {

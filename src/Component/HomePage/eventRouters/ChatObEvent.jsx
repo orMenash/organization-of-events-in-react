@@ -9,7 +9,7 @@
 // import "./chatOb.css"
 
 
-// const socketIOClient = io(process.env.BASIC_URL_SERVER);
+// const socketIOClient = io(process.env.REACT_APP_BASIC_URL_SERVER);
 
 // export default (props) => {
 //   const navigate = useNavigate();
@@ -39,7 +39,7 @@
 //   async function getData() {
 //     if (props.eventClick) {
 //       const status200 = await axios.post(
-//         `${process.env.BASIC_URL_SERVER}/event/EventChat`,
+//         `${process.env.REACT_APP_BASIC_URL_SERVER}/event/EventChat`,
 //         { IdEvent: eventClick.NameEvent }
 //       );
 //       console.log(status200);
@@ -60,7 +60,7 @@
 //       text
 //     );
 //     const status200 = await axios.post(
-//      `${process.env.BASIC_URL_SERVER}/event/EventChat`,
+//      `${process.env.REACT_APP_BASIC_URL_SERVER}/event/EventChat`,
 //       {
 //         IdEvent: eventClick.NameEvent,
 //         from: cookiesUserName.UserName,

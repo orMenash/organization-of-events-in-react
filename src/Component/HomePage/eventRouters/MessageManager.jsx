@@ -7,7 +7,7 @@ export default function () {
 
   useEffect(() => {
     axios
-      .post(`${process.env.BASIC_URL_SERVER}/users/alarmUser`, { id: localStorage.id })
+      .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/users/alarmUser`, { id: localStorage.id })
       .then((res) => {
         console.log(res);
 
@@ -19,7 +19,7 @@ export default function () {
 
   function MarkIt(item, index) {
     axios
-      .post(`${process.env.BASIC_URL_SERVER}/users/UpdateAlarmUser`, { id: item.idUser })
+      .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/users/UpdateAlarmUser`, { id: item.idUser })
       .then((res) => {
         Swal.fire({
           position: "center",

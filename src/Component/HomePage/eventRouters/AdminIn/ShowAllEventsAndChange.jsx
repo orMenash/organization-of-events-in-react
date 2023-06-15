@@ -9,7 +9,7 @@ export default () => {
   const [arrActive, setArrActive] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get(`${process.env.BASIC_URL_SERVER}/admin/allEventsAdmin`).then((res) => {
+    axios.get(`${process.env.REACT_APP_BASIC_URL_SERVER}/admin/allEventsAdmin`).then((res) => {
       setArrEnent(res.data.GetIt);
       setArrActive(res.data.arr);
     });
@@ -28,7 +28,7 @@ export default () => {
     arrEvent[index].Active = arrEvent[index].Active ? false : true;
     console.log(arrEvent);
     axios
-      .post(`${process.env.BASIC_URL_SERVER}/admin/changeEvent`, {
+      .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/admin/changeEvent`, {
         Name: cookiesuserName.UserName,
         IdEvent: info._id,
         boolStatus: boolStatus,

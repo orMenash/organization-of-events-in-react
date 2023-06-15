@@ -13,7 +13,7 @@ const LocationReceiver = () => {
 
   const handleFetchLocation = async () => {
     try {
-      const response = await axios.get(`${process.env.BASIC_URL_SERVER}/location/get_location`);
+      const response = await axios.get(`${process.env.REACT_APP_BASIC_URL_SERVER}/location/get_location`);
       if (response.status === 200) {
         coords.latitude = response.data.latitude;
         coords.longitude = response.data.longitude;

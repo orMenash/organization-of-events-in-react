@@ -9,7 +9,7 @@ const LocationSender = () => {
   
   const sendLocationToServer = async (latitude, longitude) => {
     try {
-      const response = await axios.post(`${process.env.BASIC_URL_SERVER}/location/send_location`, { latitude, longitude });
+      const response = await axios.post(`${process.env.REACT_APP_BASIC_URL_SERVER}/location/send_location`, { latitude, longitude });
       if (response.status === 200) {
         console.log('Location sent successfully.');
       } else {
