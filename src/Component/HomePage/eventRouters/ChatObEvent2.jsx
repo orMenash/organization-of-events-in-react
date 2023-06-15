@@ -8,7 +8,7 @@ import Chat2 from "../../chat/Char2";
 import "./chatOb.css"
 
 
-const socketIOClient = io(process.env.REACT_APP_REACT_APP_BASIC_URL_SERVER);
+const socketIOClient = io(process.env.REACT_APP_BASIC_URL_SERVER);
 
 export default (props) => {
   const navigate = useNavigate();
@@ -63,7 +63,7 @@ export default (props) => {
     );
     let text = d.toISOString();
     socketIOClient.emit(
-      "live On",
+      "live On React",
       refValue.current.value,
       cookiesUserName.UserName,
       eventClick.NameEvent,
