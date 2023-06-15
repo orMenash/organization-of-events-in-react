@@ -42,7 +42,7 @@ export default () => {
   return (
     <>
 
-    
+<WarpMyBar body={
         <Routes>
           <Route path="" element={<Menu />} />
           <Route
@@ -71,7 +71,7 @@ export default () => {
           <Route path="pay" element={<Pay setEventClick={setEventClick} />} />
         </Routes>
 
-
+} />
 
       {/* <WarpMyBar body={
       <Routes>

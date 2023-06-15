@@ -1,8 +1,9 @@
 import { React, useState, useRef, useEffect } from "react";
 import { ReactJewishDatePicker, BasicJewishDay } from "react-jewish-datepicker";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import TextField from "@mui/material/TextField";
+import "./CreateEvent.css"
 
 
 import {
@@ -22,12 +23,6 @@ function CreateEvent(props) {
   })
 
 
-
-
-  if (!isLoaded) {
-    console.log("!isloaded", isLoaded);
-
-  }
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
@@ -42,25 +37,23 @@ function CreateEvent(props) {
   const refClick = useRef("לוח לועזי");
   const navigate = useNavigate();
 
+  let query_places = "geevat zeev";
 
-  const aa = () => {
+  const aa = async() => {
 
-    let urlAdderss = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants%20in%20Sydney&key=AIzaSyDYoJWjL8pJ8HUo94eY5ZmZlqpQSgaG4oU`
+    let urlAdderss = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query_places}&key=${process.env.REACT_APP_GOOGLE_MAP_KEY}`;
 
-    var config = {
-      method: 'get',
-      url: urlAdderss,
-      headers: {}
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
+    let x = await fetch(urlAdderss);
+    console.log(x);
+    // axios
+    // .get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=geevat%20zeev&key=AIzaSyDYoJWjL8pJ8HUo94eY5ZmZlqpQSgaG4oU")
+    // .then((response) => {
+    //   console.log(JSON.stringify(response.data), 111111);
+    // })
+    // .catch((err) => {
+    //   console.log(err, 22222);
+    // });
+  
   }
 
 
@@ -70,8 +63,6 @@ function CreateEvent(props) {
   const newEvent = async () => {
     const dilema = checked ? basicJewishDay : basicDay;
     const photoUser = await fetch("http://picsum.photos/200");
-
-
 
     axios
       .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/event/CreateEvent`, {
@@ -91,80 +82,81 @@ function CreateEvent(props) {
         console.log(err);
       });
   };
-  return (
 
-    <div className="container text-center">
+  if (!isLoaded) {
+    console.log("!isloaded", isLoaded);
+    return <div>Loading...</div>;
+  }
+  else {
+    return (
 
+      <div  className="container text-center">
+        <div id="create_event_container" className="card">
+          <div className="card-body">
+            <h1 dir="rtl">בחר תאריך</h1>
+            <br />
 
-
-
-      <div className="card">
-        <div className="card-body">
-          <h1 dir="rtl">בחר תאריך</h1>
-          <br />
-
-          <p dir="rtl">
-            <TextField
-              sx={{ width: "135px" }}
-              value={NameEvent}
-              required
-              className="card-body"
-              label="שם אירוע .."
-              onChange={(e) => {
-                setNameEvent(e.target.value);
-              }}
-            />
-          </p>
-
-          <form>
-            <input type="radio" name="date" onClick={handleChange} />
-            <label /> {refClick.current.value}
-            <br></br>
-            <label /> שנה לוח !
-          </form>
-
-          <br />
-
-          <>
-            {checked ? (
-              <ReactJewishDatePicker
-                style={{ width: "100%" }}
-                value={new Date()}
-                isHebrew
-                isIsrael={true}
-                onClick={(day) => {
-                  setBasicJewishDay(day.date);
-                }}
-              />
-            ) : (
-              <input
-                min={new Date().toISOString().slice(0, -8)}
-                type={"datetime-local"}
-
-                defaultValue={new Date().toISOString().slice(0, -8)}
+            <p dir="rtl">
+              <TextField
+                sx={{ width: "135px" }}
+                value={NameEvent}
+                required
+                className="card-body"
+                label="שם אירוע .."
                 onChange={(e) => {
-                  setBasicDay(e.target.value);
+                  setNameEvent(e.target.value);
                 }}
               />
+            </p>
 
-            )}
-          </>
-          <br />
-          <br />
-          <p dir="rtl">
-            <Autocomplete>
-              <input type='text' placeholder='מיקום האירוע' ref={originRef} />
-            </Autocomplete>
+            <form>
+              <input type="radio" name="date" onClick={handleChange} />
+              <label /> {refClick.current.value}
+              <br></br>
+              <label /> שנה לוח !
+            </form>
 
-          </p>
-          <button onClick={() => { aa() }}>הוסף אירוע חדש !</button>
+            <br />
+
+            <>
+              {checked ? (
+                <ReactJewishDatePicker
+                  style={{ width: "100%" }}
+                  value={new Date()}
+                  isHebrew
+                  isIsrael={true}
+                  onClick={(day) => {
+                    setBasicJewishDay(day.date);
+                  }}
+                />
+              ) : (
+                <input
+                  min={new Date().toISOString().slice(0, -8)}
+                  type={"datetime-local"}
+
+                  defaultValue={new Date().toISOString().slice(0, -8)}
+                  onChange={(e) => {
+                    setBasicDay(e.target.value);
+                  }}
+                />
+
+              )}
+            </>
+            <br />
+            <br />
+            <p dir="rtl">
+              <Autocomplete>
+                <input type='text' placeholder='מיקום האירוע' ref={originRef} />
+              </Autocomplete>
+
+            </p>
+            <button onClick={() => { aa() }}>הוסף אירוע חדש !</button>
+          </div>
         </div>
+
       </div>
 
-
-
-    </div>
-
-  );
+    );
+  }
 }
 export default CreateEvent;

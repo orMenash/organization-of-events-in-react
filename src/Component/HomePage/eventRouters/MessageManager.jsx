@@ -9,10 +9,10 @@ export default function () {
     axios
       .post(`${process.env.REACT_APP_BASIC_URL_SERVER}/users/alarmUser`, { id: localStorage.id })
       .then((res) => {
-        console.log(res);
+        console.log(res,1111);
 
         if (res.data.docs) {
-          setmessage(res.data.docs);
+          setmessage(res.data.docs,222);
         }
       });
   }, []);

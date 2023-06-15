@@ -10,13 +10,14 @@ import Admin from "./Component/HomePage/Admin";
 import ResetPass from "./Component/Log in_out/ResetPass";
 import React from "react";
 import WarpMyBar from "./Component/WarpMyBar"
+import MessageManager from "./Component/HomePage/eventRouters/MessageManager"
 
 
 
 function App() {
   return (
     <>
-      <WarpMyBar body={
+  
         <Routes>
 
           <Route path="" element={<Login />} />
@@ -26,9 +27,10 @@ function App() {
           <Route path="Admin/*" element={<Admin />} />
           <Route path="pay" element={<Pay />} />
           <Route path="ResetPass" element={<ResetPass />}  />
+          <Route path="MessageManager" element={<MessageManager />} />
 
         </Routes>
-      } />
+  
     </>
   )
 }
