@@ -7,7 +7,7 @@ export default (props) => {
   const [arrEvent, setArrEnent] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:3010/event/ViewPastEvents").then((res) => {
+    axios.get(`${process.env.BASIC_URL_SERVER}/event/ViewPastEvents`).then((res) => {
       setArrEnent(res.data.GetIt);
     });
   }, []);

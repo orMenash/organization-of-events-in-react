@@ -8,7 +8,7 @@ export default function ResetPass () {
     event.preventDefault();
     console.log("ניסיון שליחה");
     axios
-      .post("http://localhost:3010/users/forgetpass", {
+      .post(`${process.env.BASIC_URL_SERVER}/users/forgetpass`, { 
         name: nameRef.current.value,
         fum: FumRef.current.value,
       })

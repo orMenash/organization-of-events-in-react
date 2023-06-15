@@ -1,21 +1,23 @@
-import { React,useEffect, useRef, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import Chat1 from "../../chat/Chat1";
 import Chat2 from "../../chat/Char2";
+import "./chatOb.css"
 
 
-const socketIOClient = io("localhost:3010");
+const socketIOClient = io(process.env.BASIC_URL_SERVER);
 
 export default (props) => {
   const navigate = useNavigate();
   const { eventClick } = props;
 
   useEffect(() => {
-    const { eventClick } = props;
+    //const { eventClick } = props;
     console.log(eventClick);
+
     socketIOClient.on(
       "live On React",
       (message, UserName, idEvent, timeMass) => {
@@ -27,6 +29,7 @@ export default (props) => {
         }
       }
     );
+
   }, []);
 
   const [cookiesUserName, setcookiesUserName] = useCookies(["UserName"]);
@@ -37,7 +40,7 @@ export default (props) => {
   async function getData() {
     if (props.eventClick) {
       const status200 = await axios.post(
-        "http://localhost:3010/event/EventChat",
+        `${process.env.BASIC_URL_SERVER}/event/EventChat`,
         { IdEvent: eventClick.NameEvent }
       );
       // console.log(status200);
@@ -65,8 +68,10 @@ export default (props) => {
       eventClick.NameEvent,
       text
     );
+
+
     const status200 = await axios.post(
-      "http://localhost:3010/event/EventChat",
+      `${process.env.BASIC_URL_SERVER}/event/EventChat`,
       {
         IdEvent: eventClick.NameEvent,
         from: cookiesUserName.UserName,
@@ -83,12 +88,14 @@ export default (props) => {
     return (
       <>
         <ol style={{ display: "flex", flexDirection: "column" }} dir="rtl">
-        <div className="fixedContainer">
+
+          <div className="fixedContainer">
             <div id="h4_ChatObEvent">
               <h1>{props.eventClick.NameEvent}</h1>
               <h2>{props.eventClick.Date.slice(0, 10)}</h2>
             </div>
           </div>
+
           {arrMes.map((item, index) => {
             // console.log(props.eventClick.Active == true);
             if (item.from) {

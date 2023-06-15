@@ -24,7 +24,7 @@ export default () => {
   useEffect(() => {
     if (cookiesToken.Token !== null) {
       axios
-        .post("http://localhost:3010/checkAuth", { token: cookiesToken.Token })
+        .post(`${process.env.BASIC_URL_SERVER}/checkAuth`, { token: cookiesToken.Token })
         .then((response) => {
           {
           }

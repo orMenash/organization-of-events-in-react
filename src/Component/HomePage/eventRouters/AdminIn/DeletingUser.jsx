@@ -10,7 +10,7 @@ export default (props) => {
   const [cookiesuserName, setcookiesuserName] = useCookies(["UserName"]);
 
   useEffect(() => {
-    axios.get("http://localhost:3010/admin/ShowAllUsersAdmin").then((res) => {
+    axios.get(`${process.env.BASIC_URL_SERVER}/admin/ShowAllUsersAdmin`).then((res) => {
       console.log(res.data);
       setArrUsers(res.data.GetIt);
       const tempArr = new Array(res.data.GetIt.length).fill(false);
@@ -28,7 +28,7 @@ export default (props) => {
     setVi(tempArr);
 
     axios
-      .post("http://localhost:3010/admin/deleteUser", {
+      .post(`${process.env.BASIC_URL_SERVER}/admin/deleteUser`, {
         Name: cookiesuserName.UserName,
         IdUser: result,
       })

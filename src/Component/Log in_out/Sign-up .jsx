@@ -13,7 +13,7 @@ export default () => {
     const photoUser = await fetch("https://picsum.photos/200");
 
     axios
-      .post("http://localhost:3010/users/signup", {
+      .post(`${process.env.BASIC_URL_SERVER}/users/signup`, {
         Name1: firstName.current.value,
         Name2: LastName.current.value,
         pass: password.current.value,
