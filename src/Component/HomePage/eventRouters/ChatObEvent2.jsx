@@ -22,6 +22,7 @@ export default (props) => {
       "live On React",
       (message, UserName, idEvent, timeMass) => {
         if (idEvent === eventClick.NameEvent) {
+          console.log(4444444);
           setMgs((current) => [
             ...current,
             { messages: message, from: UserName, timeMass: timeMass },

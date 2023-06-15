@@ -37,29 +37,10 @@ function CreateEvent(props) {
   const refClick = useRef("לוח לועזי");
   const navigate = useNavigate();
 
-  let query_places = "geevat zeev";
-
-  const aa = async() => {
-
-    let urlAdderss = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query_places}&key=${process.env.REACT_APP_GOOGLE_MAP_KEY}`;
-
-    let x = await fetch(urlAdderss);
-    console.log(x);
-    // axios
-    // .get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=geevat%20zeev&key=AIzaSyDYoJWjL8pJ8HUo94eY5ZmZlqpQSgaG4oU")
-    // .then((response) => {
-    //   console.log(JSON.stringify(response.data), 111111);
-    // })
-    // .catch((err) => {
-    //   console.log(err, 22222);
-    // });
-  
-  }
-
-
   const handleChange = () => {
     setChecked(!checked);
   };
+
   const newEvent = async () => {
     const dilema = checked ? basicJewishDay : basicDay;
     const photoUser = await fetch("http://picsum.photos/200");
@@ -69,6 +50,7 @@ function CreateEvent(props) {
         NameEvent: NameEvent,
         Date: dilema,
         photoUser: photoUser.url,
+        loc: originRef.current.value
       })
       .then((result) => {
         props.setEventClick(result.data.data);
@@ -150,7 +132,7 @@ function CreateEvent(props) {
               </Autocomplete>
 
             </p>
-            <button onClick={() => { aa() }}>הוסף אירוע חדש !</button>
+            <button onClick={() => { newEvent() }}>הוסף אירוע חדש !</button>
           </div>
         </div>
 
